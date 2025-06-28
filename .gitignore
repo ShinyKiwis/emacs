@@ -1,0 +1,7 @@
+history
+transient/
+auto-save-list/
+eln-cache/
+elpa/
+tree-sitter/
+*~
