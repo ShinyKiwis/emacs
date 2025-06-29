@@ -149,11 +149,6 @@
     (consult-ripgrep nil query)))
 
 ;; Load config files
-(require 'modeline)
-(require 'treesitter)
-(require 'lsp)
-(require 'projects)
-
 (use-package evil
   :init
   (setq evil-want-keybinding nil)
@@ -222,7 +217,6 @@
   :ensure t)
 (setq magit-completing-read-function #'completing-read-default)
 
-
 (use-package vterm
   :ensure t
   :config
@@ -236,11 +230,11 @@
 		eshell-mode-hook))
   (add-hook mode (lambda() (display-line-numbers-mode 0)))))
 
-(use-package perspective
-  :custom
-  (persp-mode-prefix-key (kbd "C-c p"))
-  :init
-  (persp-mode))
+(require 'modeline)
+(require 'treesitter)
+(require 'lsp)
+(require 'projects)
+(require 'note-taking)
 
 (use-package emacs
   :custom
@@ -257,9 +251,10 @@
      "fd22a3aac273624858a4184079b7134fb4e97104d1627cb2b488821be765ff17"
      default))
  '(package-selected-packages
-   '(affe anzu cape consult corfu doom-themes evil evil-anzu
-	  evil-collection evil-leader fzf-native hotfuzz magit
-	  marginalia orderless projectile vertico vterm vue-ts-mode)))
+   '(affe cape corfu doom-themes ef-themes evil-anzu evil-collection
+	  evil-leader flx hotfuzz lsp-ui magit marginalia nerd-icons
+	  orderless org-modern pdf-tools perspective projectile-rails
+	  shrink-path vertico vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

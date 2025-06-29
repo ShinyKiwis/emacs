@@ -10,6 +10,12 @@
   :config
   (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map))
 
+(use-package perspective
+  :custom
+  (persp-mode-prefix-key (kbd "C-c p"))
+  :init
+  (persp-mode))
+
 (defun my/start-luniva-perspective ()
   "Switch to the Luniva perspective if it exists; otherwise set it up."
   (interactive)
