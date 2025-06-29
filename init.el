@@ -152,16 +152,7 @@
 (require 'modeline)
 (require 'treesitter)
 (require 'lsp)
-
-(use-package projectile
-  :init
-  (projectile-mode +1))
-(use-package projectile-rails
-  :after projectile
-  :hook
-  (projectile-mode . projectile-rails-global-mode)
-  :config
-  (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map))
+(require 'projects)
 
 (use-package evil
   :init
