@@ -9,6 +9,7 @@
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode 1)
 
+(global-eldoc-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
@@ -56,7 +57,7 @@
 (global-set-key (kbd "C-k") 'windmove-up)
 
 ;; Theme setup
-(defvar my/theme-dark 'modus-vivendi-tinted)
+(defvar my/theme-dark 'doom-moonlight)
 (defvar my/theme-light 'modus-operandi-tinted)
 (defvar my/current-theme my/theme-dark)
 
@@ -107,13 +108,24 @@
 
 (use-package consult
   :ensure t)
+(consult-customize consult--source-buffer :hidden t :default nil)
+
+(defvar consult--source-perspective
+  (list :name     "Perspective"
+        :narrow   ?s
+        :category 'buffer
+        :state    #'consult--buffer-state
+        :default  t
+        :items    #'persp-get-buffer-names))
+
+(push consult--source-perspective consult-buffer-sources)
 
 (use-package hotfuzz
   :after vertico)
 
 (use-package orderless
   :custom
-  (completion-styles '(hotfuzz orderless basic))
+  (completion-styles '(hotfuzz orderless basic partial-completion))
   (completion-category-defaults nil)
   (completion-category-overrides
    '((file (styles hotfuzz)))))
@@ -136,6 +148,21 @@
                  "")))
     (consult-ripgrep nil query)))
 
+;; Load config files
+(require 'modeline)
+(require 'treesitter)
+(require 'lsp)
+
+(use-package projectile
+  :init
+  (projectile-mode +1))
+(use-package projectile-rails
+  :after projectile
+  :hook
+  (projectile-mode . projectile-rails-global-mode)
+  :config
+  (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map))
+
 (use-package evil
   :init
   (setq evil-want-keybinding nil)
@@ -152,10 +179,11 @@
     (kbd "<leader>sh") 'my/split-window-below
     (kbd "<leader>se") 'balance-windows
     (kbd "<leader>sf") (lambda () (interactive) (enlarge-window-horizontally 999))
-    (kbd "<leader>ff") 'affe-find
+    (kbd "<leader>ff") 'projectile-find-file
     (kbd "<leader>fb") 'consult-buffer
     (kbd "<leader>fv") 'my/consult-ripgrep-from-selection
-    (kbd "<leader>fw") 'affe-grep))
+    (kbd "<leader>fw") 'affe-grep
+    (kbd "<leader>q") 'flymake-show-buffer-diagnostics)
 
 (use-package anzu
   :init
@@ -176,7 +204,8 @@
   :custom
   (corfu-cycle t)
   (corfu-auto t)
-  (corfu-auto-delay 0.2)
+  (corfu-auto-delay 0.01)
+  (corfu-auto-prefix 0.01)
   (corfu-quit-no-match 'separator)
 
   :bind
@@ -187,6 +216,12 @@
         ([backtab] . corfu-previous)
         ("RET" . corfu-insert)))
 
+(add-hook 'corfu-mode-hook
+          (lambda ()
+            (setq-local completion-styles '(basic)
+                        completion-category-overrides nil
+                        completion-category-defaults nil)))
+
 (use-package cape
   :init
   (add-to-list 'completion-at-point-functions #'cape-file)
@@ -194,10 +229,27 @@
 
 (use-package magit
   :ensure t)
+(setq magit-completing-read-function #'completing-read-default)
 
-;; Load config files
-(require 'modeline)
-(require 'treesitter)
+
+(use-package vterm
+  :ensure t
+  :config
+  (define-key vterm-mode-map (kbd "M-q") #'vterm-send-next-key)
+  :custom
+  (vterm-timer-delay 0.01))
+(dolist (mode '(org-mode-hook
+		term-mode-hook
+		vterm-mode-hook
+		shell-mode-hook
+		eshell-mode-hook))
+  (add-hook mode (lambda() (display-line-numbers-mode 0)))))
+
+(use-package perspective
+  :custom
+  (persp-mode-prefix-key (kbd "C-c p"))
+  :init
+  (persp-mode))
 
 (use-package emacs
   :custom
@@ -207,13 +259,19 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("8d3ef5ff6273f2a552152c7febc40eabca26bae05bd12bc85062e2dc224cde9a"
+     "4b88b7ca61eb48bb22e2a4b589be66ba31ba805860db9ed51b4c484f3ef612a7"
+     "4594d6b9753691142f02e67b8eb0fda7d12f6cc9f1299a49b819312d6addad1d"
+     "fd22a3aac273624858a4184079b7134fb4e97104d1627cb2b488821be765ff17"
+     default))
  '(package-selected-packages
-   '(affe anzu cape consult corfu evil evil-anzu evil-collection
-	  evil-leader fzf-native hotfuzz magit marginalia orderless
-	  vertico vue-ts-mode)))
+   '(affe anzu cape consult corfu doom-themes evil evil-anzu
+	  evil-collection evil-leader fzf-native hotfuzz magit
+	  marginalia orderless projectile vertico vterm vue-ts-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(line-number-current-line ((t (:weight bold :foreground "yellow")))))
+ )

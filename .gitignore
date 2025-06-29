@@ -4,4 +4,8 @@ auto-save-list/
 eln-cache/
 elpa/
 tree-sitter/
+packages/
+.*
+tramp
+projectile-bookmarks.eld
 *~
