@@ -1,6 +1,8 @@
 history
 transient/
 auto-save-list/
+auto-saves/
+backups/
 eln-cache/
 elpa/
 tree-sitter/
@@ -9,3 +11,4 @@ packages/
 tramp
 projectile-bookmarks.eld
 *~
+recentf

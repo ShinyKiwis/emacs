@@ -32,6 +32,22 @@
 (setq window-min-height 1)
 (setq window-min-width 1)
 
+;; Move backup files into single folder
+(setq backup-directory-alist
+      `(("." . "~/.config/emacs/backups")))
+(setq backup-by-copying t) ;; Avoid symlinks
+(setq delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+;; Move auto saves into single folder
+(setq auto-save-file-name-transforms
+      `((".*" "~/.config/emacs/auto-saves/" t)))
+
+(recentf-mode 1)
+(setq recentf-max-menu-items 15)
+(setq ecentf-max-saved-items 50)
+
 (defun my/split-window-right()
   "Split window vertically, balance and move to new window"
   (interactive)
@@ -250,11 +266,7 @@
      "4594d6b9753691142f02e67b8eb0fda7d12f6cc9f1299a49b819312d6addad1d"
      "fd22a3aac273624858a4184079b7134fb4e97104d1627cb2b488821be765ff17"
      default))
- '(package-selected-packages
-   '(affe cape corfu doom-themes ef-themes evil-anzu evil-collection
-	  evil-leader flx hotfuzz lsp-ui magit marginalia nerd-icons
-	  orderless org-modern pdf-tools perspective projectile-rails
-	  shrink-path vertico vterm)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

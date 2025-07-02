@@ -1,5 +1,5 @@
 (use-package pdf-tools
-  :defer t
+  :ensure t
   :config
   (pdf-tools-install)
   (setq-default pdf-view-display-size 'fit-page)
@@ -47,5 +47,30 @@
    (shell . t)))
 (setq org-babel-python-command "python3")
 
+;; Setup for org agenda
+(setq org-agenda-files
+      '("~/Documents/org/tasks/tasks.org"))
+(setq org-todo-keywords
+      '((sequence "TODO" "IN-PROGRESS" "|" "DONE" "CANCELED" "BLOCKED")))
+
+(use-package org-super-agenda
+  :after org-agenda
+  :config
+  (setq org-super-agenda-keep-order t)
+  (org-super-agenda-mode))
+
+(setq org-agenda-files
+      (append
+       (directory-files-recursively "~/Documents/org/life/" "\\.org$")
+       (directory-files-recursively "~/Documents/org/work/" "\\.org$")
+       (directory-files-recursively "~/Documents/org/study/" "\\.org$")
+       (list "~/Documents/org/inbox.org"
+             "~/Documents/org/tasks.org"
+             "~/Documents/org/calendar.org")
+       (directory-files-recursively "~/Documents/org/projects/" "\\.org$")))
+
+;; Enable logging into LOGBOOK drawer instead of task body
+(setq org-log-into-drawer t)
+(setq org-log-done 'time)
 
 (provide 'note-taking)
