@@ -251,6 +251,7 @@
 (require 'lsp)
 (require 'projects)
 (require 'note-taking)
+(require 'accounting)
 
 (use-package emacs
   :custom
@@ -266,7 +267,12 @@
      "4594d6b9753691142f02e67b8eb0fda7d12f6cc9f1299a49b819312d6addad1d"
      "fd22a3aac273624858a4184079b7134fb4e97104d1627cb2b488821be765ff17"
      default))
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(affe cape corfu doom-themes ef-themes evil-anzu evil-collection
+	  evil-leader flx hledger-mode hotfuzz lsp-ui magit marginalia
+	  nerd-icons orderless org-agenda org-modern org-super-agenda
+	  pdf-tools perspective projectile-rails shrink-path vertico
+	  vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

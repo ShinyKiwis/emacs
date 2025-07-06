@@ -14,6 +14,9 @@
 (use-package org
   :ensure t)
 
+(use-package org-agenda
+  :ensure nil)
+
 (use-package org-modern
   :ensure t)
 (with-eval-after-load 'org (global-org-modern-mode))
@@ -49,25 +52,38 @@
 
 ;; Setup for org agenda
 (setq org-agenda-files
-      '("~/Documents/org/tasks/tasks.org"))
+    (append
+	(list "~/Documents/org/inbox.org"
+	    "~/Documents/org/tasks.org"
+	    "~/Documents/org/calendar.org")
+	(directory-files-recursively "~/Documents/org/projects/" "\\.org$")))
 (setq org-todo-keywords
       '((sequence "TODO" "IN-PROGRESS" "|" "DONE" "CANCELED" "BLOCKED")))
 
 (use-package org-super-agenda
-  :after org-agenda
+  :hook (after-init . org-super-agenda-mode)
   :config
-  (setq org-super-agenda-keep-order t)
+  (setq org-super-agenda-groups
+	'((:auto-category t)))
+  (setq org-super-agenda-keep-order nil)
   (org-super-agenda-mode))
 
-(setq org-agenda-files
-      (append
-       (directory-files-recursively "~/Documents/org/life/" "\\.org$")
-       (directory-files-recursively "~/Documents/org/work/" "\\.org$")
-       (directory-files-recursively "~/Documents/org/study/" "\\.org$")
-       (list "~/Documents/org/inbox.org"
-             "~/Documents/org/tasks.org"
-             "~/Documents/org/calendar.org")
-       (directory-files-recursively "~/Documents/org/projects/" "\\.org$")))
+(setq org-agenda-custom-commands
+      '(("u" "Super view"
+         ((agenda ""
+                  ((org-super-agenda-groups
+                    '((:name "Today"
+                             :time-grid t)))))
+          (alltodo ""
+                   ((org-agenda-overriding-header "Projects")
+                    (org-super-agenda-groups
+                     '((:auto-category t)
+                       (:discard (:anything t))))))))))
+(setq org-agenda-prefix-format
+      '((agenda . "  %c%-4t% s")
+        (todo   . "  ")
+        (tags   . "  ")
+        (search . "  ")))
 
 ;; Enable logging into LOGBOOK drawer instead of task body
 (setq org-log-into-drawer t)
