@@ -89,4 +89,14 @@
 (setq org-log-into-drawer t)
 (setq org-log-done 'time)
 
+;; Setup org-cliplink and org-web-tools
+(use-package org-cliplink
+  :ensure t
+  :bind (("C-c l" . org-cliplink)))
+
+(use-package org-web-tools
+  :ensure t
+  :bind (("C-c w" . org-web-tools-insert-link-for-url)
+         ("C-c W" . org-web-tools-read-url-as-org)))
+
 (provide 'note-taking)

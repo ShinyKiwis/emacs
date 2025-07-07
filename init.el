@@ -187,6 +187,11 @@
     (kbd "<leader>fw") 'affe-grep
     (kbd "<leader>q") 'flymake-show-buffer-diagnostics)
 
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+
 (use-package anzu
   :init
   (global-anzu-mode +1))
@@ -269,8 +274,9 @@
      default))
  '(package-selected-packages
    '(affe cape corfu doom-themes ef-themes evil-anzu evil-collection
-	  evil-leader flx hledger-mode hotfuzz lsp-ui magit marginalia
-	  nerd-icons orderless org-agenda org-modern org-super-agenda
+	  evil-leader evil-surround flx hledger-mode hotfuzz lsp-ui
+	  magit marginalia nerd-icons orderless org-agenda
+	  org-cliplink org-modern org-super-agenda org-web-tools
 	  pdf-tools perspective projectile-rails shrink-path vertico
 	  vterm)))
 (custom-set-faces
