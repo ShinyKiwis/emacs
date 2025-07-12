@@ -1,14 +1,9 @@
 (use-package pdf-tools
   :ensure t
+  :mode ("\\.pdf\\'" . pdf-view-mode)
   :config
   (pdf-tools-install)
-  (setq-default pdf-view-display-size 'fit-page)
-  :bind
-  (:map pdf-view-mode-map)
-  ("l"  . image-forward-hscroll)
-  ("h"  . image-backward-hscroll)
-  ("j" . pdf-view-next-page)
-  ("k" . pdf-view-previous-page))
+  (setq-default pdf-view-display-size 'fit-page))
 (add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode -1)))
 
 (use-package org
@@ -98,5 +93,8 @@
   :ensure t
   :bind (("C-c w" . org-web-tools-insert-link-for-url)
          ("C-c W" . org-web-tools-read-url-as-org)))
+
+(add-hook 'org-mode-hook #'visual-line-mode)
+(add-hook 'text-mode-hook #'visual-line-mode)
 
 (provide 'note-taking)
