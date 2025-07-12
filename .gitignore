@@ -5,6 +5,7 @@ auto-saves/
 backups/
 eln-cache/
 elpa/
+themes/
 tree-sitter/
 packages/
 .*
