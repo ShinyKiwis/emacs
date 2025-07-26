@@ -82,7 +82,11 @@
                    ((org-agenda-overriding-header "Projects")
                     (org-super-agenda-groups
                      '((:auto-category t)
-                       (:discard (:anything t))))))))))
+                       (:discard (:anything t))))))))
+        ("d" "Daily Agenda"
+         ((agenda ""
+                  ((org-agenda-span 'day)
+                   (org-agenda-overriding-header "Daily Agenda")))))))
 (setq org-agenda-prefix-format
       '((agenda . "  %c%-4t% s")
         (todo   . "  ")
