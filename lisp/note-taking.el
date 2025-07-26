@@ -1,5 +1,6 @@
 (use-package pdf-tools
   :ensure t
+  :hook (pdf-view-mode . pdf-view-restore-mode)
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :config
   (pdf-tools-install)
@@ -25,6 +26,11 @@
   (set-face-foreground face (face-attribute 'default :background)))
 (set-face-background 'fringe (face-attribute 'default :background))
 
+;; Mermaid Support
+(use-package ob-mermaid
+  :ensure t)
+(setq org-image-actual-width nil)
+
 (setq
  org-auto-align-tags nil
  org-tags-column 0
@@ -42,8 +48,11 @@
  '((ruby . t)
    (python . t)
    (emacs-lisp . t)
+   (mermaid . t)
    (shell . t)))
 (setq org-babel-python-command "python3")
+
+(add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
 
 ;; Setup for org agenda
 (setq org-agenda-files
@@ -96,5 +105,12 @@
 
 (add-hook 'org-mode-hook #'visual-line-mode)
 (add-hook 'text-mode-hook #'visual-line-mode)
+
+;; Support for SQLi scroll down
+(add-hook 'sql-interactive-mode-hook
+  (lambda ()
+    (setq-local comint-move-point-for-output t)
+    (setq-local comint-scroll-to-bottom-on-output t)
+    (setq-local comint-scroll-to-bottom-on-input t)))
 
 (provide 'note-taking)

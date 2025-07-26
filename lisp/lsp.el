@@ -19,4 +19,8 @@
     :config
     (which-key-mode))
 
+(add-hook 'sql-mode-hook 'lsp)
+(setq lsp-sqls-workspace-config-path nil)
+(setq lsp-sqls-workspace-config-path "workspace")
+
 (provide 'lsp)
