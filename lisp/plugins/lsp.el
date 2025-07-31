@@ -1,3 +1,4 @@
+;; LSP configuration
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c l")
@@ -23,4 +24,4 @@
 (setq lsp-sqls-workspace-config-path nil)
 (setq lsp-sqls-workspace-config-path "workspace")
 
-(provide 'lsp)
+(provide 'plugins/lsp)

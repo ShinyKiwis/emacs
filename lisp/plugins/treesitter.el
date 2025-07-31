@@ -1,3 +1,5 @@
+;; Treesitter configuration
+
 (setq treesit-language-source-alist
       '((ruby "https://github.com/tree-sitter/tree-sitter-ruby")
         (python "https://github.com/tree-sitter/tree-sitter-python")
@@ -27,4 +29,4 @@
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-ts-mode))
 
 (setq treesit-font-lock-level 4)
-(provide 'treesitter)
+(provide 'plugins/treesitter)

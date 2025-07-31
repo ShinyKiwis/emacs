@@ -1,3 +1,4 @@
+;; Accounting configuration
 (use-package hledger-mode
   :ensure t
   :mode ("\\.journal\\'" . hledger-mode)
@@ -25,4 +26,4 @@
 (define-key hledger-mode-map (kbd "C-c =") 'hledger-increment-entry-date)
 (define-key hledger-mode-map (kbd "C-c -") 'hledger-decrement-entry-date)
 
-(provide 'accounting)
+(provide 'plugins/accounting)

@@ -1,6 +1,6 @@
+;; Org and Note-taking configuration
 (use-package pdf-tools
   :ensure t
-  :hook (pdf-view-mode . pdf-view-restore-mode)
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :config
   (pdf-tools-install)
@@ -92,15 +92,11 @@
         (todo   . "  ")
         (tags   . "  ")
         (search . "  ")))
+(setq org-archive-location "archive/%s_archive::")
 
 ;; Enable logging into LOGBOOK drawer instead of task body
 (setq org-log-into-drawer t)
 (setq org-log-done 'time)
-
-;; Setup org-cliplink and org-web-tools
-(use-package org-cliplink
-  :ensure t
-  :bind (("C-c l" . org-cliplink)))
 
 (use-package org-web-tools
   :ensure t
@@ -117,4 +113,4 @@
     (setq-local comint-scroll-to-bottom-on-output t)
     (setq-local comint-scroll-to-bottom-on-input t)))
 
-(provide 'note-taking)
+(provide 'plugins/note-taking)

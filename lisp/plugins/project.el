@@ -1,4 +1,4 @@
-;; Projectile and project-related setup
+;; Perspective and Projectile configuration
 (use-package projectile
   :init
   (projectile-mode +1))
@@ -48,8 +48,6 @@
 
 (add-hook 'buffer-list-update-hook #'my/setup-luniva-buffer-keys)
 
-
-
 (defun my/select-project-layout ()
   "Prompt to select and launch a project-specific perspective layout."
   (interactive)
@@ -69,4 +67,16 @@
       (funcall fn))))
 (global-set-key (kbd "C-c s p") #'my/select-project-layout)
 
-(provide 'projects)
+;; Consult - Perspective configuration
+(defvar consult--source-perspective
+  (list :name     "Perspective"
+        :narrow   ?s
+        :category 'buffer
+        :state    #'consult--buffer-state
+        :default  t
+        :items    #'persp-get-buffer-names))
+
+(unless (member consult--source-perspective consult-buffer-sources)
+  (push consult--source-perspective consult-buffer-sources))
+
+(provide 'plugins/project)
