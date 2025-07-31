@@ -79,4 +79,4 @@
 (unless (member consult--source-perspective consult-buffer-sources)
   (push consult--source-perspective consult-buffer-sources))
 
-(provide 'plugins/project)
+(provide 'plugins/projects)

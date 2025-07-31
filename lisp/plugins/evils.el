@@ -52,4 +52,4 @@
   :config
   (evil-collection-init))
 
-(provide 'plugins/evil)
+(provide 'plugins/evils)

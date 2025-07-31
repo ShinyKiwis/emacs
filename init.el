@@ -14,13 +14,12 @@
 
 (require 'plugins/accounting)
 (require 'plugins/completion)
-(require 'plugins/consult)
-(require 'plugins/evil)
+(require 'plugins/evils)
 (require 'plugins/lsp)
-(require 'plugins/magit)
+(require 'plugins/vc)
 (require 'plugins/note-taking)
-(require 'plugins/project)
-(require 'plugins/term)
+(require 'plugins/projects)
+(require 'plugins/terminal)
 (require 'plugins/treesitter)
 
 (dolist (mode '(org-mode-hook
