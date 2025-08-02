@@ -7,6 +7,12 @@
   (setq-default pdf-view-display-size 'fit-page))
 (add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode -1)))
 
+;; Support pdf-tools to remember last page
+(use-package pdf-view-restore
+  :after pdf-tools
+  :config
+  (add-hook 'pdf-view-mode-hook 'pdf-view-restore-mode))
+
 (use-package org
   :ensure t)
 

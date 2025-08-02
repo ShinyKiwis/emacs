@@ -48,7 +48,8 @@
 	  evil-leader evil-surround flx hledger-mode hotfuzz lsp-ui
 	  magit marginalia nerd-icons ob-mermaid orderless org-agenda
 	  org-modern org-super-agenda org-web-tools pdf-tools
-	  perspective projectile-rails shrink-path vertico vterm)))
+	  pdf-view-restore perspective projectile-rails shrink-path
+	  vertico vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
