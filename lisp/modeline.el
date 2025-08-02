@@ -20,14 +20,28 @@
 
 ;;; Buffer Name
 (defun my-modeline-buffer-file-name ()
-  "Show path relative to Git root if available; otherwise, show full file path."
+  "Show path relative to Git root if available; shorten intermediate dirs if too long."
   (if buffer-file-name
       (let* ((git-root (locate-dominating-file buffer-file-name ".git"))
              (path (if git-root
                        (file-relative-name buffer-file-name git-root)
                      (abbreviate-file-name buffer-file-name)))
-             (modified (when (buffer-modified-p) "*")))
-        (propertize (concat path modified) 'face 'mode-line-buffer-id))
+             (modified (when (buffer-modified-p) "*"))
+             (available-width (- (window-width) 30))
+             (full (concat path modified)))
+        (if (< (string-width full) available-width)
+            (propertize full 'face 'mode-line-buffer-id)
+          (let* ((parts (split-string path "/"))
+                 (abbreviated (concat
+                               (mapconcat
+                                (lambda (p)
+                                  (if (or (eq p (car (last parts)))
+                                          (string-match-p "\\." p))
+                                      p
+                                    (substring p 0 1)))
+                                parts "/")
+                               modified)))
+            (propertize abbreviated 'face 'mode-line-buffer-id))))
     (propertize (concat (buffer-name)
                         (when (buffer-modified-p) "*"))
                 'face 'mode-line-buffer-id)))
