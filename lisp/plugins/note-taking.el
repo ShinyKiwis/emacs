@@ -18,6 +18,7 @@
 
 (use-package org-agenda
   :ensure nil)
+(global-set-key (kbd "C-c o a") #'org-agenda)
 
 (use-package org-modern
   :ensure t)
@@ -49,6 +50,7 @@
  org-agenda-tags-column 0
  org-ellipsis "…")
 
+;; Org Babel for literate programming
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((ruby . t)
@@ -104,6 +106,7 @@
 (setq org-log-into-drawer t)
 (setq org-log-done 'time)
 
+;; Org Web Tools
 (use-package org-web-tools
   :ensure t
   :bind (("C-c w" . org-web-tools-insert-link-for-url)
@@ -112,11 +115,20 @@
 (add-hook 'org-mode-hook #'visual-line-mode)
 (add-hook 'text-mode-hook #'visual-line-mode)
 
-;; Support for SQLi scroll down
+;; Support for SQLi auto scroll down
 (add-hook 'sql-interactive-mode-hook
   (lambda ()
     (setq-local comint-move-point-for-output t)
     (setq-local comint-scroll-to-bottom-on-output t)
     (setq-local comint-scroll-to-bottom-on-input t)))
+
+;; Org-related timestamp clock
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "C-c c i") #'org-clock-in)
+  (define-key org-mode-map (kbd "C-c c o") #'org-clock-out)
+  (define-key org-mode-map (kbd "M-<up>") #'org-timestamp-up)
+  (define-key org-mode-map (kbd "M-<down>") #'org-timestamp-down)
+  (define-key org-mode-map (kbd "M-<left>") #'org-timestamp-down-day)
+  (define-key org-mode-map (kbd "M-<right>") #'org-timestamp-up-day))
 
 (provide 'plugins/note-taking)

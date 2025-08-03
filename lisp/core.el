@@ -29,7 +29,7 @@
 
 (setq-default truncate-lines t)
 (setq window-min-height 1)
-(setq window-min-width 1)
+(setq window-min-width 2)
 
 ;; Clean up backup files and auto saves into single folder
 (defvar my/backup-dir (expand-file-name "~/.emacs-backup/"))

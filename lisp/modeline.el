@@ -10,6 +10,8 @@
 		" "
 		(:eval (my-modeline-buffer-file-name))
 		mode-line-format-right-align
+		(:eval (my-modeline-org-clock))
+		" "
 		(:eval (my-modeline-git-branch))
 		" "
 		(:eval (my-modeline-clock))
@@ -18,7 +20,7 @@
 		mode-line-end-spaces
 		))
 
-;;; Buffer Name
+;; Buffer Name
 (defun my-modeline-buffer-file-name ()
   "Show path relative to Git root if available; shorten intermediate dirs if too long."
   (if buffer-file-name
@@ -46,7 +48,7 @@
                         (when (buffer-modified-p) "*"))
                 'face 'mode-line-buffer-id)))
 
-;;; Evil Modeline
+;; Evil Modeline
 (defface my-modeline-evil-normal
   '((t (:inherit font-lock-keyword-face :weight bold)))
   "Face for Evil normal state.")
@@ -80,8 +82,8 @@
 		 (_ 'mode-line))))
     (propertize (concat icon state-name) 'face face)))
 
-;;; Git
-;;;; Branch Name
+;; Git
+;;; Branch Name
 (defface my-modeline-git-branch
   '((t (:inherit font-lock-keyword-face :weight bold)))
   "Face for Git branch name.")
@@ -110,12 +112,20 @@
                           'face 'my-modeline-git-branch)))))))))
 (setq auto-revert-check-vc-info t)
 
-;;; Clock
+;; Clock
 (defun my-modeline-clock()
   "Return the current time as a formatted string like 'Fri 27 Jun 00:27."
   (format-time-string "%a %d %b %H:%M"))
 
-;;; Major Mode
+;; Org-Clock
+(defun my-modeline-org-clock ()
+  "Return the org-mode clock string if clocking and there's enough space."
+  (when (and (org-clocking-p)
+             (> (window-total-width) 90))
+    (propertize (org-clock-get-clock-string)
+                'face 'org-date)))
+
+;; Major Mode
 (defun my-modeline-major-mode ()
   "Return the name of the current major mode."
   (propertize (format-mode-line mode-name) 'face 'shadow))
