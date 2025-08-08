@@ -13,6 +13,10 @@
   :config
   (add-hook 'pdf-view-mode-hook 'pdf-view-restore-mode))
 
+;; Support pdf-tools to link to specific page
+(use-package org-pdftools
+  :hook (org-mode . org-pdftools-setup-link))
+
 (use-package org
   :ensure t)
 
