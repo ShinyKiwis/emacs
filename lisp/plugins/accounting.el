@@ -19,11 +19,6 @@
                           (bounds-of-thing-at-point 'symbol))))
     (list (car bounds) (point) hledger-accounts-cache)))
 
-(defun hledger-clear-accounts-cache ()
-  "Clear the hledger accounts completion cache."
-  (interactive)
-  (setq hledger-accounts-cache nil))
-
 (add-hook 'hledger-mode-hook
           (lambda ()
             (add-hook 'completion-at-point-functions 'hledger-completion-accounts)))
