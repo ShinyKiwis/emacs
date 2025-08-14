@@ -44,7 +44,7 @@
      "fd22a3aac273624858a4184079b7134fb4e97104d1627cb2b488821be765ff17"
      default))
  '(package-selected-packages
-   '(affe cape corfu diff-hl doom-themes ef-themes evil-anzu
+   '(affe cape corfu devdocs diff-hl doom-themes ef-themes evil-anzu
 	  evil-collection evil-leader evil-surround flx fringe-helper
 	  hledger-mode hotfuzz lsp-ui magit marginalia nerd-icons
 	  ob-mermaid orderless org-modern org-pdftools

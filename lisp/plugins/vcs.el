@@ -12,5 +12,4 @@
   (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
   (setq-default fringes-outside-margins t))
 
-
 (provide 'plugins/vcs)
