@@ -120,10 +120,10 @@
 ;; Org-Clock
 (defun my-modeline-org-clock ()
   "Return the org-mode clock string if clocking and there's enough space."
-  (when (and (org-clocking-p)
-             (> (window-total-width) 90))
+  (when (and (fboundp 'org-clocking-p) (org-clocking-p)
+	     (> (window-total-width) 90))
     (propertize (org-clock-get-clock-string)
-                'face 'org-date)))
+		'face 'org-date)))
 
 ;; Major Mode
 (defun my-modeline-major-mode ()

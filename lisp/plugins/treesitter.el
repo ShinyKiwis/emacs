@@ -10,6 +10,7 @@
 	(vue        "https://github.com/ikatyang/tree-sitter-vue")
 	(css "https://github.com/tree-sitter/tree-sitter-css")
 	(cpp "https://github.com/tree-sitter/tree-sitter-cpp" "master" "src")
+	(c "https://github.com/tree-sitter/tree-sitter-cpp" "master" "src")
         (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile" "main" "src")))
 
 (setq major-mode-remap-alist

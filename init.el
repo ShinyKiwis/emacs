@@ -21,6 +21,7 @@
 (require 'plugins/projects)
 (require 'plugins/terminal)
 (require 'plugins/treesitter)
+(require 'plugins/workflow)
 
 (dolist (mode '(org-mode-hook
 		term-mode-hook
@@ -48,8 +49,9 @@
 	  evil-collection evil-leader evil-surround flx fringe-helper
 	  hledger-mode hotfuzz lsp-ui magit marginalia nerd-icons
 	  ob-mermaid orderless org-modern org-pdftools
-	  org-super-agenda org-web-tools pdf-view-restore perspective
-	  projectile-rails shrink-path vertico vterm)))
+	  org-super-agenda org-web-tools password-store
+	  pdf-view-restore perspective projectile-rails shrink-path
+	  vertico vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

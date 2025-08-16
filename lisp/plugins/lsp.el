@@ -7,10 +7,13 @@
 	  '(orderless)))
   :custom
   (lsp-completion-provider :none)
+  (lsp-signature-auto-activate nil)
   :hook ((ruby-mode . lsp)
          (js-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration)
 	 (lsp-completion-mode . my/lsp-mode-setup-completion))
+  :bind (:map lsp-mode-map
+              ("C-c s" . lsp-signature-activate))
   :commands lsp)
 (setq lsp-headerline-breadcrumb-enable nil)
 
