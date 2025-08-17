@@ -1,5 +1,12 @@
-;; Treesitter configuration
+;; Treesitter and syntax-related configuration
 
+;; Setup Flycheck
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
+
+;; Treesitter
 (setq treesit-language-source-alist
       '((ruby "https://github.com/tree-sitter/tree-sitter-ruby")
         (python "https://github.com/tree-sitter/tree-sitter-python")
@@ -30,6 +37,10 @@
 ;; Handle vue-ts-mode
 (require 'vue-ts-mode)
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-ts-mode))
+
+;; Handle HAML-mode
+(use-package haml-mode
+  :ensure t)
 
 (setq treesit-font-lock-level 4)
 (provide 'plugins/treesitter)
