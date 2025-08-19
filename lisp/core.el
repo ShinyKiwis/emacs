@@ -12,6 +12,10 @@
 (electric-pair-mode 1)
 (file-name-shadow-mode 1)
 
+;; Tab configuration
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+
 ;; Smooth scrolling
 (setq scroll-margin 10
       scroll-conservatively 101
