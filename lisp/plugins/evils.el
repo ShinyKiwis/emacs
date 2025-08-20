@@ -11,6 +11,12 @@
   (select-window (split-window-below))
   (balance-windows))
 
+(defun my/affe-grep-thing-at-point ()
+  "Run `affe-grep` with the word at point as initial input."
+  (interactive)
+  (let ((initial (thing-at-point 'word t)))
+    (affe-grep default-directory initial)))
+
 (use-package evil
   :init
   (setq evil-want-keybinding nil)
@@ -31,8 +37,10 @@
     (kbd "<leader>ss") 'window-swap-states
     (kbd "<leader>ff") 'projectile-find-file
     (kbd "<leader>fb") 'consult-buffer
+    (kbd "<leader>fu") 'my/affe-grep-thing-at-point
     (kbd "<leader>fv") 'my/consult-ripgrep-from-selection
     (kbd "<leader>fw") 'affe-grep
+    (kbd "<leader>fr") 'mode-line-other-buffer
     (kbd "<leader>q") 'flymake-show-buffer-diagnostics))
 
 (use-package evil-surround
