@@ -2,9 +2,7 @@
 
 ;; Setup Flycheck
 (use-package flycheck
-  :ensure t
-  :config
-  (add-hook 'after-init-hook #'global-flycheck-mode))
+  :ensure t)
 
 ;; Treesitter
 (setq treesit-language-source-alist

@@ -22,10 +22,9 @@
 
 (use-package projectile-rails
   :after projectile
-  :hook
-  (projectile-mode . projectile-rails-global-mode)
-  :config
-  (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map))
+  :hook (projectile-mode . projectile-rails-global-mode)
+  :bind (:map projectile-rails-mode-map
+              ("C-c r" . projectile-rails-command-map)))
 
 (use-package perspective
   :custom
@@ -39,7 +38,7 @@
   (interactive)
   (let* ((persp-name "lnv")
          (default-directory "~/Code/personal/luniva/")
-         (existing (gethash persp-name (perspectives-hash)))) ; ← check if already created
+         (existing (gethash persp-name (perspectives-hash))))
     (persp-switch persp-name)
     (unless existing
       ;; Only run once when creating the perspective

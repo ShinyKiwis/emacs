@@ -2,14 +2,12 @@
 (defun my/split-window-right()
   "Split window vertically, balance and move to new window"
   (interactive)
-  (select-window (split-window-right))
-  (balance-windows))
+  (select-window (split-window-right)))
 
 (defun my/split-window-below()
   "Split window horizontally, balance and move to new window"
   (interactive)
-  (select-window (split-window-below))
-  (balance-windows))
+  (select-window (split-window-below)))
 
 (defun my/affe-grep-thing-at-point ()
   "Run `affe-grep` with the word at point as initial input."
@@ -22,6 +20,7 @@
   (setq evil-want-keybinding nil)
   :config
   (evil-mode 1)
+  (setq evil-symbol-word-search t)
 
   ;; Set leader for all states you care about
   (dolist (state '(normal visual motion))
