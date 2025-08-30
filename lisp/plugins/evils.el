@@ -18,9 +18,10 @@
 (use-package evil
   :init
   (setq evil-want-keybinding nil)
+  (setq evil-want-Y-yank-to-eol t)
+  (setq evil-symbol-word-search t)
   :config
   (evil-mode 1)
-  (setq evil-symbol-word-search t)
 
   ;; Set leader for all states you care about
   (dolist (state '(normal visual motion))
