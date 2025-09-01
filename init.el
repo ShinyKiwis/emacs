@@ -45,6 +45,13 @@
      "4594d6b9753691142f02e67b8eb0fda7d12f6cc9f1299a49b819312d6addad1d"
      "fd22a3aac273624858a4184079b7134fb4e97104d1627cb2b488821be765ff17"
      default))
+ '(org-agenda-files
+   '("/home/nguyen/Documents/org/inbox.org"
+     "/home/nguyen/Documents/org/tasks.org"
+     "/home/nguyen/Documents/org/calendar.org"
+     "/home/nguyen/Documents/org/projects/petalport/characters.org"
+     "/home/nguyen/Documents/org/projects/petalport/index.org"
+     "/home/nguyen/Documents/org/projects/petalport/world_building.org"))
  '(package-selected-packages
    '(affe cape corfu devdocs diff-hl doom-themes ef-themes emms evil-anzu
           evil-collection evil-leader evil-surround flx flycheck
