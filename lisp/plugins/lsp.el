@@ -8,8 +8,7 @@
   :custom
   (lsp-completion-provider :none)
   (lsp-signature-auto-activate nil)
-  :hook ((ruby-mode . lsp)
-         (js-mode . lsp)
+  :hook ((js-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration)
 	 (lsp-completion-mode . my/lsp-mode-setup-completion))
   :bind (:map lsp-mode-map
@@ -26,5 +25,15 @@
 (add-hook 'sql-mode-hook 'lsp)
 (setq lsp-sqls-workspace-config-path nil)
 (setq lsp-sqls-workspace-config-path "workspace")
+
+;; Ruby Mode
+(use-package inf-ruby
+  :ensure t
+  :hook ((compilation-filter . inf-ruby-auto-enter-and-focus)))
+
+(use-package robe
+  :ensure t
+  :hook ((ruby-mode . robe-mode)
+         (ruby-ts-mode . robe-mode)))
 
 (provide 'plugins/lsp)

@@ -12,8 +12,10 @@
 (defun my/affe-grep-thing-at-point ()
   "Run `affe-grep` with the word at point as initial input."
   (interactive)
-  (let ((initial (thing-at-point 'word t)))
-    (affe-grep default-directory initial)))
+  (let* ((initial (thing-at-point 'word t))
+         (root (or (projectile-project-root)
+                   default-directory)))
+    (affe-grep root initial)))
 
 (use-package evil
   :init

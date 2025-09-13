@@ -58,8 +58,8 @@
           fringe-helper haml-mode hledger-mode hotfuzz lsp-ui magit
           marginalia nerd-icons ob-mermaid orderless org-modern
           org-pdftools org-super-agenda org-web-tools password-store
-          pdf-view-restore perspective popper projectile-rails
-          shrink-path vertico vterm)))
+          pdf-view-restore perspective popper projectile-rails robe
+          shrink-path tree-sitter-langs vertico vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
