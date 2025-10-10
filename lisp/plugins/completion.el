@@ -84,4 +84,11 @@
                  "")))
     (consult-ripgrep nil query)))
 
+;; Auto parenthesis
+(use-package smartparens
+  :ensure t
+  :config
+  (require 'smartparens-config))
+(smartparens-global-mode 1)
+
 (provide 'plugins/completion)

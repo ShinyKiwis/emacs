@@ -36,4 +36,8 @@
   :hook ((ruby-mode . robe-mode)
          (ruby-ts-mode . robe-mode)))
 
+;; Clojure
+(use-package cider
+  :ensure t)
+
 (provide 'plugins/lsp)
