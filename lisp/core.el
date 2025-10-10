@@ -9,6 +9,7 @@
 (tooltip-mode -1)
 (menu-bar-mode -1)
 (set-fringe-mode 15)
+(electric-pair-mode 1)
 (file-name-shadow-mode 1)
 
 ;; Tab configuration
