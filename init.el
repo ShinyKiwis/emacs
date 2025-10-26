@@ -46,12 +46,12 @@
      "fd22a3aac273624858a4184079b7134fb4e97104d1627cb2b488821be765ff17"
      default))
  '(org-agenda-files
-   '("/home/nguyen/Documents/org/inbox.org"
-     "/home/nguyen/Documents/org/tasks.org"
-     "/home/nguyen/Documents/org/calendar.org"
-     "/home/nguyen/Documents/org/projects/petalport/characters.org"
-     "/home/nguyen/Documents/org/projects/petalport/index.org"
-     "/home/nguyen/Documents/org/projects/petalport/world_building.org"))
+   '("~/Documents/org/inbox.org"
+     "~/Documents/org/tasks.org"
+     "~/Documents/org/calendar.org"
+     "~/Documents/org/projects/petalport/characters.org"
+     "~/Documents/org/projects/petalport/index.org"
+     "~/Documents/org/projects/petalport/world_building.org"))
  '(package-selected-packages
    '(affe cape cider corfu devdocs diff-hl doom-themes ef-themes emms
           evil-anzu evil-collection evil-leader evil-surround flx
