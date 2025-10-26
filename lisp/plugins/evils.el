@@ -9,13 +9,13 @@
   (interactive)
   (select-window (split-window-below)))
 
-(defun my/affe-grep-thing-at-point ()
-  "Run `affe-grep` with the word at point as initial input."
+(defun my/consult-ripgrep-thing-at-point ()
+  "Run `consult-ripgrep` with the word at point as initial input."
   (interactive)
   (let* ((initial (thing-at-point 'word t))
-         (root (or (projectile-project-root)
-                   default-directory)))
-    (affe-grep root initial)))
+         (dir (or (projectile-project-root)
+                  default-directory)))
+    (consult-ripgrep dir initial)))
 
 (use-package evil
   :init
@@ -39,7 +39,7 @@
     (kbd "<leader>ss") 'window-swap-states
     (kbd "<leader>ff") 'projectile-find-file
     (kbd "<leader>fb") 'consult-buffer
-    (kbd "<leader>fu") 'my/affe-grep-thing-at-point
+    (kbd "<leader>fu") 'my/consult-ripgrep-thing-at-point
     (kbd "<leader>fv") 'my/consult-ripgrep-from-selection
     (kbd "<leader>fw") 'affe-grep
     (kbd "<leader>fr") 'mode-line-other-buffer
