@@ -84,5 +84,11 @@
                  "")))
     (consult-ripgrep nil query)))
 
+;; Rainbow parentheses
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
 (provide 'plugins/completion)
 

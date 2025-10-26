@@ -44,6 +44,7 @@
     (kbd "<leader>fw") 'affe-grep
     (kbd "<leader>fr") 'mode-line-other-buffer
     (kbd "<leader>do") 'diff-hl-mode
+    (kbd "<leader>jj") 'evil-jump-item
     (kbd "<leader>q") 'flymake-show-buffer-diagnostics))
 
 (use-package evil-surround

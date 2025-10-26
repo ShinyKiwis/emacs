@@ -32,6 +32,9 @@
 (add-to-list 'auto-mode-alist '("\\.ts\\'"  . typescript-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 
+;; Handle js-mode
+(setq js-indent-level 2)
+
 ;; Handle vue-ts-mode
 (require 'vue-ts-mode)
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-ts-mode))
