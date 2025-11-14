@@ -2,6 +2,9 @@
 (use-package magit
   :ensure t)
 (setq magit-completing-read-function #'completing-read-default)
+(setq magit-display-buffer-function
+      (lambda (buffer)
+        (display-buffer buffer '(display-buffer-same-window))))
 
 (use-package diff-hl
   :ensure t

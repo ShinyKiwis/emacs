@@ -5,6 +5,7 @@
 ;; Load configuration, no need for recursively load for now
 (add-to-list 'load-path "~/.config/emacs/lisp")
 (add-to-list 'load-path "~/.config/emacs/lisp/plugins")
+(add-to-list 'load-path "~/.config/emacs/lisp/projects")
 
 ;; Store Emacs customization settings in a separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))

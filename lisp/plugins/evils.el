@@ -41,10 +41,11 @@
     (kbd "<leader>fb") 'consult-buffer
     (kbd "<leader>fu") 'my/consult-ripgrep-thing-at-point
     (kbd "<leader>fv") 'my/consult-ripgrep-from-selection
-    (kbd "<leader>fw") 'affe-grep
+    (kbd "<leader>fw") 'consult-ripgrep
     (kbd "<leader>fr") 'mode-line-other-buffer
     (kbd "<leader>do") 'diff-hl-mode
     (kbd "<leader>jj") 'evil-jump-item
+    (kbd "<leader>jb") 'mode-line-other-buffer
     (kbd "<leader>q") 'flymake-show-buffer-diagnostics))
 
 (use-package evil-surround
