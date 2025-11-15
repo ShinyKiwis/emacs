@@ -1,7 +1,3 @@
-;; Load project files, this folder is ignored, different machine may have different projects
-(require 'imgongo)
-(require 'writebook)
-
 ;; Perspective and Projectile configuration
 (use-package popper
   :ensure t
@@ -35,6 +31,10 @@
   (persp-mode-prefix-key (kbd "C-c p"))
   :init
   (persp-mode))
+
+;; Load project files, this folder is ignored, different machine may have different projects
+(require 'imgongo)
+(require 'writebook)
 
 (defun my/select-project-layout ()
   "Prompt to select and launch a project-specific perspective layout."
