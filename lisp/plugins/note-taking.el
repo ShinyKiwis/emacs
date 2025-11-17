@@ -72,9 +72,8 @@
 	(list "~/Documents/org/inbox.org"
 	    "~/Documents/org/tasks.org"
 	    "~/Documents/org/calendar.org")
-	(directory-files-recursively "~/Documents/org/projects/" "\\.org$")))
-(setq org-todo-keywords
-      '((sequence "TODO" "IN-PROGRESS" "|" "DONE" "CANCELED" "BLOCKED")))
+	(directory-files-recursively "~/Documents/org/projects/" "\\.org$")
+	(directory-files-recursively "~/Documents/org/work/" "\\.org$")))
 
 (use-package org-super-agenda
   :hook (after-init . org-super-agenda-mode)
@@ -109,6 +108,15 @@
 ;; Enable logging into LOGBOOK drawer instead of task body
 (setq org-log-into-drawer t)
 (setq org-log-done 'time)
+(setq org-log-state-notes-insert-after-drawers nil)
+(setq org-log-state-notes-into-drawer t)
+(setq org-log-reschedule 'time)
+(setq org-log-redeadline 'time)
+
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "IN-PROGRESS(i!)" "|" "DONE(d!)" "CANCELED(c@/!)" "BLOCKED(b@/!)")))
+(setq org-use-fast-todo-selection t)
+
 
 ;; Org Web Tools
 (use-package org-web-tools

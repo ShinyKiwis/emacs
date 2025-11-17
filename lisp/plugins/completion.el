@@ -72,6 +72,7 @@
   :init
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+
 (use-package consult
   :ensure t)
 (consult-customize consult--source-buffer :hidden t :default nil)

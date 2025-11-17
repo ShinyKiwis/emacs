@@ -5,15 +5,22 @@
   (defun my/lsp-mode-setup-completion ()
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
 	  '(orderless)))
+  (defun my/lsp-cape-setup ()
+    "Configure completion-at-point-functions to merge lsp-capf and cape backends."
+    (setq-local completion-at-point-functions
+                (list (cape-capf-super #'lsp-completion-at-point #'cape-file #'cape-dabbrev))))
+
   :custom
   (lsp-completion-provider :none)
   (lsp-signature-auto-activate nil)
   :hook ((js-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration)
-	 (lsp-completion-mode . my/lsp-mode-setup-completion))
+	       (lsp-completion-mode . my/lsp-mode-setup-completion)
+	       (lsp-completion-mode . my/lsp-cape-setup))
   :bind (:map lsp-mode-map
               ("C-c s" . lsp-signature-activate))
   :commands lsp)
+
 (setq lsp-headerline-breadcrumb-enable nil)
 
 (use-package lsp-ui :commands lsp-ui-mode)

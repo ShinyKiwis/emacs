@@ -17,7 +17,7 @@
 
 (add-hook 'server-after-make-frame-hook
           (lambda ()
-            (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 130)
+            (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 140)
             (load-theme my/current-theme t)))
 
 (provide 'ui)
