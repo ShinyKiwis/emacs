@@ -14,4 +14,13 @@
 (global-set-key (kbd "C-j") 'windmove-down)
 (global-set-key (kbd "C-k") 'windmove-up)
 
+;; Default-binding for move-text
+(use-package move-text
+  :ensure t
+  :init
+  ;; Default bindings:
+  ;; M-<up>   -> move-text-up
+  ;; M-<down> -> move-text-down
+  (move-text-default-bindings))
+
 (provide 'keybindings)

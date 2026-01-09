@@ -91,5 +91,10 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+(use-package avy
+  :ensure t
+  :bind
+  (("C-;" . avy-goto-char)))
+
 (provide 'plugins/completion)
 
