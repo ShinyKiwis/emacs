@@ -1,7 +1,6 @@
 (use-package docker
   :ensure t
   :bind ("C-c d" . docker))
-(provide 'plugins/programming)
 
 (defun my/vterm-new ()
   "Create a new vterm buffer with a unique name."
@@ -17,3 +16,4 @@
          (html-mode . emmet-mode)))
 
 (global-set-key (kbd "C-c t") #'my/vterm-new)
+(provide 'plugins/programming)
