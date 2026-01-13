@@ -46,6 +46,10 @@
     (kbd "<leader>do") 'diff-hl-mode
     (kbd "<leader>jj") 'evil-jump-item
     (kbd "<leader>jb") 'mode-line-other-buffer
+    (kbd "<leader>lm") 'gptel-menu
+    (kbd "<leader>la") 'gptel-add
+    (kbd "<leader>lc") 'gptel-context-remove-all
+    (kbd "<leader>ll") 'gptel
     (kbd "<leader>q") 'flymake-show-buffer-diagnostics))
 
 (use-package evil-surround
