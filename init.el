@@ -7,6 +7,10 @@
 (add-to-list 'load-path "~/.config/emacs/lisp/plugins")
 (add-to-list 'load-path "~/.config/emacs/lisp/projects")
 
+;; Load third-party packages
+(add-to-list 'load-path "~/.config/emacs/site-lisp/gptel-quick")
+(add-to-list 'load-path "~/.config/emacs/site-lisp/posframe")
+
 ;; Store Emacs customization settings in a separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 

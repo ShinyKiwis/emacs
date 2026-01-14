@@ -47,6 +47,8 @@
     (kbd "<leader>jj") 'evil-jump-item
     (kbd "<leader>jb") 'mode-line-other-buffer
     (kbd "<leader>lm") 'gptel-menu
+    (kbd "<leader>lq") 'gptel-quick
+    (kbd "<leader>lr") 'gptel-rewrite
     (kbd "<leader>la") 'gptel-add
     (kbd "<leader>lc") 'gptel-context-remove-all
     (kbd "<leader>ll") 'gptel

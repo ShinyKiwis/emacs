@@ -8,6 +8,12 @@
 (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
 (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
 
+;; GPTel tools
+;; + to generate longer summary
+;; M-RET to continue in chat buffer
+(require 'posframe)
+(require 'gptel-quick)
+
 ;; Copilot configuration for auto code completion
 (use-package copilot
   :ensure t
