@@ -24,6 +24,7 @@
 (require 'plugins/completion)
 (require 'plugins/evils)
 (require 'plugins/lsp)
+(require 'plugins/llm)
 (require 'plugins/vcs)
 (require 'plugins/note-taking)
 (require 'plugins/projects)

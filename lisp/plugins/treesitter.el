@@ -11,7 +11,6 @@
         (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
         (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "v0.23.1")
         (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
-        (yaml       "https://github.com/ikatyang/tree-sitter-yaml")
         (vue        "https://github.com/ikatyang/tree-sitter-vue")
         (css "https://github.com/tree-sitter/tree-sitter-css")
         (c "https://github.com/tree-sitter/tree-sitter-c" "v0.23.6")
@@ -27,10 +26,16 @@
 
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 (add-to-list 'auto-mode-alist '("\\.dockerignore\\'" . dockerfile-mode))
-(add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'"  . js-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'"  . typescript-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+
+;; Handle YAML-mode
+(use-package yaml-mode
+  :ensure t
+  :mode ("\\.ya?ml\\'" . yaml-mode)
+  :init
+  (setq yaml-indent-offset 2))
 
 ;; Handle js-mode
 (setq js-indent-level 2)

@@ -11,6 +11,7 @@
           "\\*rails-console\\*"
           "\\*rails-db\\*"
           "\\*vite\\*"
+          "\\*webpack\\*"
           "\\*sidekiq\\*"
           "\\*console\\*"))
   (popper-mode +1)
@@ -36,11 +37,12 @@
 (require 'imgongo)
 (require 'writebook)
 (require 'ccp)
+(require 'lxb)
 
 (defun my/select-project-layout ()
   "Prompt to select and launch a project-specific perspective layout."
   (interactive)
-  (let* ((projects '(("ccp" . my/start-ccp-perspective)))
+  (let* ((projects '(("ccp" . my/start-ccp-perspective) ("lxb" . my/start-lxb-perspective)))
          (choice (completing-read "Select project: " (mapcar #'car projects))))
     (when-let ((fn (cdr (assoc choice projects))))
       (funcall fn))))
