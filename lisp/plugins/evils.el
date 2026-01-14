@@ -50,6 +50,7 @@
     (kbd "<leader>la") 'gptel-add
     (kbd "<leader>lc") 'gptel-context-remove-all
     (kbd "<leader>ll") 'gptel
+    (kbd "<leader>i") 'consult-imenu
     (kbd "<leader>q") 'flymake-show-buffer-diagnostics))
 
 (use-package evil-surround
