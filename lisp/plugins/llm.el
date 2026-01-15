@@ -19,6 +19,10 @@
   :ensure t
   :hook (prog-mode . copilot-mode)
   :config
+  (setq copilot-indent-offset-warning-disable t)
   (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
+
+(use-package eca
+  :ensure t)
 
 (provide 'plugins/llm)
