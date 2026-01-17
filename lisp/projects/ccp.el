@@ -9,11 +9,11 @@
       ;; Only run once when creating the perspective
       (find-file "README.md")
       (dolist (spec
-               '(("*rails-server*" . "bin/rails server")
-                 ("*rails-console*" . "bin/rails console")
-                 ("*vite*" . "bin/vite dev")
-                 ("*sidekiq*" . "bundle exec sidekiq -C config/sidekiq.yml")
-                 ("*console*" . nil)))
+               '(("*ccp-rails-server*" . "bin/rails server")
+                 ("*ccp-rails-console*" . "bin/rails console")
+                 ("*ccp-vite*" . "bin/vite dev")
+                 ("*ccp-sidekiq*" . "bundle exec sidekiq -C config/sidekiq.yml")
+                 ("*ccp-console*" . nil)))
         (let ((buf (generate-new-buffer (car spec))))
           (with-current-buffer buf
             (vterm-mode)
@@ -24,11 +24,11 @@
 
 (defun my/setup-ccp-buffer-keys ()
   (when (string= (persp-name (persp-curr)) "ccp")
-    (local-set-key (kbd "M-1") (lambda () (interactive) (switch-to-buffer "*rails-server*")))
-    (local-set-key (kbd "M-2") (lambda () (interactive) (switch-to-buffer "*rails-console*")))
-    (local-set-key (kbd "M-3") (lambda () (interactive) (switch-to-buffer "*vite*")))
-    (local-set-key (kbd "M-4") (lambda () (interactive) (switch-to-buffer "*sidekiq*")))
-    (local-set-key (kbd "M-5") (lambda () (interactive) (switch-to-buffer "*console*")))))
+    (local-set-key (kbd "M-1") (lambda () (interactive) (switch-to-buffer "*ccp-rails-server*")))
+    (local-set-key (kbd "M-2") (lambda () (interactive) (switch-to-buffer "*ccp-rails-console*")))
+    (local-set-key (kbd "M-3") (lambda () (interactive) (switch-to-buffer "*ccp-vite*")))
+    (local-set-key (kbd "M-4") (lambda () (interactive) (switch-to-buffer "*ccp-sidekiq*")))
+    (local-set-key (kbd "M-5") (lambda () (interactive) (switch-to-buffer "*ccp-console*")))))
 
 (add-hook 'buffer-list-update-hook #'my/setup-ccp-buffer-keys)
 

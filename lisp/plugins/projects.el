@@ -7,13 +7,14 @@
   :init
   (setq popper-window-height 30)
   (setq popper-reference-buffers
-        '("\\*rails-server\\*"
-          "\\*rails-console\\*"
-          "\\*rails-db\\*"
-          "\\*vite\\*"
-          "\\*webpack\\*"
-          "\\*sidekiq\\*"
-          "\\*console\\*"))
+        '("\\*\\(.*-\\)?rails-server\\*"
+          "\\*\\(.*-\\)?rails-console\\*"
+          "\\*\\(.*-\\)?rails-db\\*"
+          "\\*\\(.*-\\)?vite\\*"
+          "\\*\\(.*-\\)?webpack\\*"
+          "\\*\\(.*-\\)?sidekiq\\*"
+          "\\*\\(.*-\\)?console\\*"))
+  (setq popper-group-function #'popper-group-by-perspective)
   (popper-mode +1)
   (popper-echo-mode -1)) 
 
