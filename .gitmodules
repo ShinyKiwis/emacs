@@ -1,0 +1,6 @@
+[submodule "site-lisp/gptel-quick"]
+	path = site-lisp/gptel-quick
+	url = https://github.com/karthink/gptel-quick
+[submodule "site-lisp/posframe"]
+	path = site-lisp/posframe
+	url = https://github.com/tumashu/posframe

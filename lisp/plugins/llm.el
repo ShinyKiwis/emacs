@@ -14,6 +14,11 @@
 (require 'posframe)
 (require 'gptel-quick)
 
+(use-package gptel-agent
+  :vc ( :url "https://github.com/karthink/gptel-agent"
+        :rev :newest)
+  :config (gptel-agent-update))         ;Read files from agents directories
+
 ;; Copilot configuration for auto code completion
 (use-package copilot
   :ensure t
