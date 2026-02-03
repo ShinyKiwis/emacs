@@ -15,5 +15,8 @@
          (vue-ts-mode . emmet-mode)
          (html-mode . emmet-mode)))
 
+(use-package gdscript-mode
+  :vc (:url "git@github.com:godotengine/emacs-gdscript-mode.git"))
+
 (global-set-key (kbd "C-c t") #'my/vterm-new)
 (provide 'plugins/programming)
