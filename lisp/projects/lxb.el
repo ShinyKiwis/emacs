@@ -10,7 +10,7 @@
       (find-file "README.md")
       (dolist (spec
                '(("*lxb-rails-server*" . "bundle exec rails server -p 3001")
-                 ("*lxb-webpack*" . "bin/webpack-dev-server")
+                 ("*lxb-webpack*" . "NODE_OPTIONS=--openssl-legacy-provider bin/webpack-dev-server")
                  ("*lxb-rails-console*" . "bin/rails console")
                  ("*lxb-sidekiq*" . "bundle exec sidekiq")
                  ("*lxb-console*" . nil)))

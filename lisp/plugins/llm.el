@@ -19,6 +19,10 @@
         :rev :newest)
   :config (gptel-agent-update))         ;Read files from agents directories
 
+(use-package gptel-magit
+  :ensure t
+  :hook (magit-mode . gptel-magit-install))
+
 ;; Copilot configuration for auto code completion
 (use-package copilot
   :ensure t

@@ -17,4 +17,10 @@
 (global-set-key (kbd "C-c e c") 'emms-show)             ;; Show current track
 (global-set-key (kbd "C-c e SPC") 'emms-pause)          ;; Pause/resume
 
+(use-package ready-player
+  :ensure t
+  :config
+  (ready-player-mode +1))
+(setq ready-player-my-media-collection-location "~/Music/")
+
 (provide 'plugins/entertainment)
