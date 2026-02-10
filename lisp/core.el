@@ -2,6 +2,7 @@
 (setq inhibit-startup-message t)
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode 1)
+(global-auto-revert-mode 1)
 
 (global-eldoc-mode -1)
 (scroll-bar-mode -1)
