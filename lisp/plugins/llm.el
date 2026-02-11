@@ -17,7 +17,7 @@
 (use-package gptel-agent
   :vc ( :url "https://github.com/karthink/gptel-agent"
         :rev :newest)
-  :config (gptel-agent-update))         ;Read files from agents directories
+  :config (gptel-agent-update))
 
 (use-package gptel-magit
   :ensure t
@@ -32,6 +32,8 @@
   (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
 
 (use-package eca
-  :ensure t)
+  :ensure t
+  :config
+  (setq eca-custom-command '("~/.config/emacs/eca/eca" "server")))
 
 (provide 'plugins/llm)

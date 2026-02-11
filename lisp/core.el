@@ -13,6 +13,8 @@
 (electric-pair-mode 1)
 (file-name-shadow-mode 1)
 
+(setq compile-command "")
+
 ;; Tab configuration
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)

@@ -20,4 +20,10 @@
             (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 140)
             (load-theme my/current-theme t)))
 
+;; Nyan for fun!
+(use-package nyan-mode
+  :ensure t
+  :config
+  (setq nyan-minimum-window-width 100))
+
 (provide 'ui)

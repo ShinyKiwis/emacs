@@ -10,6 +10,8 @@
 		" "
 		(:eval (my-modeline-buffer-file-name))
 		mode-line-format-right-align
+    (:eval (list (nyan-create)))
+    " "
 		(:eval (my-modeline-org-clock))
 		" "
 		(:eval (my-modeline-git-branch))
