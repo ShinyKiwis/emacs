@@ -17,7 +17,7 @@
 
 (add-hook 'server-after-make-frame-hook
           (lambda ()
-            (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 140)
+            (set-face-attribute 'default nil :font "Inconsolata Nerd Font Mono" :height 140)
             (load-theme my/current-theme t)))
 
 ;; Nyan for fun!

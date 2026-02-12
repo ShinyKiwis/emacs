@@ -1,5 +1,4 @@
 ;; Load paths
-(add-to-list 'load-path "~/.config/emacs/themes/modus-themes")
 (add-to-list 'load-path "~/.config/emacs/packages/vue-ts-mode")
 
 ;; Load configuration, no need for recursively load for now
@@ -24,6 +23,7 @@
 (require 'packages)
 (require 'modeline)
 
+(require 'plugins/themes)
 (require 'plugins/accounting)
 (require 'plugins/completion)
 (require 'plugins/evils)
