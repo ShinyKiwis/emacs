@@ -17,10 +17,8 @@
 (use-package exec-path-from-shell
 	     :ensure t)
 
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
-
-(when (daemonp)
+(when (or (memq window-system '(mac ns x))
+          (daemonp))
   (exec-path-from-shell-initialize))
 
 (provide 'packages)
