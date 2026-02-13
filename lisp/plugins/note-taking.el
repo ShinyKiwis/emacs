@@ -30,12 +30,16 @@
 (modify-all-frames-parameters
  '((right-divider-width . 10)
    (internal-border-width . 10)))
-(dolist (face '(window-divider
-                window-divider-first-pixel
-                window-divider-last-pixel))
-  (face-spec-reset-face face)
-  (set-face-foreground face (face-attribute 'default :background)))
-(set-face-background 'fringe (face-attribute 'default :background))
+
+(defun my/customize-window-divider ()
+  (dolist (face '(window-divider
+                  window-divider-first-pixel
+                  window-divider-last-pixel))
+    (face-spec-reset-face face)
+    (set-face-foreground face (face-attribute 'default :background)))
+  (set-face-background 'fringe (face-attribute 'default :background)))
+
+(add-hook 'after-load-theme-hook #'my/customize-window-divide/r)
 
 ;; Mermaid Support
 (use-package ob-mermaid
@@ -48,7 +52,9 @@
  org-catch-invisible-edits 'show-and-error
  org-special-ctrl-a/e t
  org-insert-heading-respect-content t
-
+ org-blank-before-new-entry
+ '((heading . t)
+   (plain-list-item . nil))
  org-hide-emphasis-markers t
  org-pretty-entities t
  org-agenda-tags-column 0
@@ -68,18 +74,18 @@
 
 ;; Setup for org agenda
 (setq org-agenda-files
-    (append
-	(list "~/Documents/org/inbox.org"
-	    "~/Documents/org/tasks.org"
-	    "~/Documents/org/calendar.org")
-	(directory-files-recursively "~/Documents/org/projects/" "\\.org$")
-	(directory-files-recursively "~/Documents/org/work/" "\\.org$")))
+      (append
+	     (list "~/Documents/org/inbox.org"
+	           "~/Documents/org/tasks.org"
+	           "~/Documents/org/calendar.org")
+	     (directory-files-recursively "~/Documents/org/projects/" "\\.org$")
+	     (directory-files-recursively "~/Documents/org/work/" "\\.org$")))
 
 (use-package org-super-agenda
   :hook (after-init . org-super-agenda-mode)
   :config
   (setq org-super-agenda-groups
-	'((:auto-category t)))
+	      '((:auto-category t)))
   (setq org-super-agenda-keep-order nil)
   (org-super-agenda-mode))
 
@@ -129,18 +135,18 @@
 
 ;; Support for SQLi auto scroll down
 (add-hook 'sql-interactive-mode-hook
-  (lambda ()
-    (setq-local comint-move-point-for-output t)
-    (setq-local comint-scroll-to-bottom-on-output t)
-    (setq-local comint-scroll-to-bottom-on-input t)))
+          (lambda ()
+            (setq-local comint-move-point-for-output t)
+            (setq-local comint-scroll-to-bottom-on-output t)
+            (setq-local comint-scroll-to-bottom-on-input t)))
 
 ;; Org-related timestamp clock
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-c c i") #'org-clock-in)
   (define-key org-mode-map (kbd "C-c c o") #'org-clock-out)
-  (define-key org-mode-map (kbd "M-<up>") #'org-timestamp-up)
-  (define-key org-mode-map (kbd "M-<down>") #'org-timestamp-down)
-  (define-key org-mode-map (kbd "M-<left>") #'org-timestamp-down-day)
-  (define-key org-mode-map (kbd "M-<right>") #'org-timestamp-up-day))
+  (define-key org-mode-map (kbd "C-c <up>") #'org-timestamp-up)
+  (define-key org-mode-map (kbd "C-c <down>") #'org-timestamp-down)
+  (define-key org-mode-map (kbd "C-c <left>") #'org-timestamp-down-day)
+  (define-key org-mode-map (kbd "C-c <right>") #'org-timestamp-up-day))
 
 (provide 'plugins/note-taking)
