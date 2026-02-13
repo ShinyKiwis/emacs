@@ -8,6 +8,7 @@
   (setq doom-modeline-enable-buffer-position nil)
   (setq doom-modeline-buffer-encoding nil))
 
+(setq auto-revert-check-vc-info t)
 (setq mode-line-right-align-edge 'right-fringe)
 
 ;; Config display-time
