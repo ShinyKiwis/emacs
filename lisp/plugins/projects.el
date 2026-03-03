@@ -13,6 +13,7 @@
           "\\*\\(.*-\\)?vite\\*"
           "\\*\\(.*-\\)?webpack\\*"
           "\\*\\(.*-\\)?sidekiq\\*"
+          "\\*\\(.*-\\)?copilot\\*"
           "\\*\\(.*-\\)?console\\*"))
   (setq popper-group-function #'popper-group-by-perspective)
   (popper-mode +1)
@@ -60,5 +61,13 @@
 
 (unless (member consult--source-perspective consult-buffer-sources)
   (push consult--source-perspective consult-buffer-sources))
+
+(defun my/open-perspective-copilot-buffer ()
+  "Open the copilot buffer for the current perspective."
+  (interactive)
+  (let* ((persp-name (persp-name (persp-curr)))
+         (buf-name (format "*%s-copilot*" persp-name)))
+    (pop-to-buffer buf-name)))
+(global-set-key (kbd "M-0") #'my/open-perspective-copilot-buffer)
 
 (provide 'plugins/projects)

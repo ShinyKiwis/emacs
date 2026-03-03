@@ -17,6 +17,17 @@
                   default-directory)))
     (consult-ripgrep dir initial)))
 
+(defun my/open-copilot-vterm ()
+  "Open a dedicated vterm buffer running copilot."
+  (interactive)
+  (let* ((name (format "*%s-copilot*" (persp-current-name)))
+         (buf (get-buffer name)))
+    (if buf
+        (switch-to-buffer buf)
+      (let ((vterm-buffer-name name))
+        (vterm)
+        (vterm-send-string "copilot\n")))))
+
 (use-package evil
   :init
   (setq evil-want-keybinding nil)
@@ -53,7 +64,8 @@
     (kbd "<leader>lc") 'gptel-context-remove-all
     (kbd "<leader>ll") 'gptel
     (kbd "<leader>i") 'consult-imenu
-    (kbd "<leader>q") 'flymake-show-buffer-diagnostics))
+    (kbd "<leader>q") 'flymake-show-buffer-diagnostics
+    (kbd "<leader>as") 'my/open-copilot-vterm))
 
 (use-package evil-surround
   :ensure t

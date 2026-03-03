@@ -39,7 +39,7 @@
     (set-face-foreground face (face-attribute 'default :background)))
   (set-face-background 'fringe (face-attribute 'default :background)))
 
-(add-hook 'after-load-theme-hook #'my/customize-window-divide/r)
+(add-hook 'after-load-theme-hook #'my/customize-window-divider)
 
 ;; Mermaid Support
 (use-package ob-mermaid
